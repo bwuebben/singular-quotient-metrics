@@ -1,0 +1,8 @@
+{
+  "rational_cycle_cases": 48,
+  "orthogonal_block_decomposition": true,
+  "product_formula": true,
+  "kernel_jump": true,
+  "quaternionic_pair_cancellation": true,
+  "scope": "finite formulas only; no geometric or analytic clearance"
+}

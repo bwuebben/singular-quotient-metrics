@@ -1,0 +1,26 @@
+{
+  "title": "Relative metric estimates near reducible Yang–Mills connections",
+  "author": "Bernd Johannes Wuebben",
+  "orcid": "https://orcid.org/0009-0002-4588-3284",
+  "manuscript_date": "2026-10-28",
+  "version": "1.0",
+  "pages": 14,
+  "files": {
+    "main.tex": {
+      "sha256": "1f4d3319eb515db3c9d50a08053ccc965caf9ea96ad850cffea687c0c4450156",
+      "size_bytes": 46197
+    },
+    "main.pdf": {
+      "sha256": "e7a003f4b125bcf625899940324d52f8cd14aa9b15c5f45515ea6930bab1c875",
+      "size_bytes": 373567
+    },
+    "checks/check_cycle.py": {
+      "sha256": "a5286ef527a987078e6164f06b6d258f404dd3c576439a74a20a79902d2cdea0",
+      "size_bytes": 2104
+    },
+    "checks/cycle_results.json": {
+      "sha256": "26eee6dfb7c322a38f7a1afd3c58554fe9911bc4be8eadfe8c3cbb08db68bede",
+      "size_bytes": 238
+    }
+  }
+}

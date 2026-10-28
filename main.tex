@@ -1,0 +1,1116 @@
+\pdfoutput=1
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdfauthor={Bernd Johannes Wuebben},
+pdftitle={Relative metric estimates near reducible Yang--Mills connections}}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Hh}{\mathbb H}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\kk}{\mathfrak k}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\diag}{\operatorname{diag}}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Rea}{Re}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\title[Relative metrics near reducible Yang--Mills connections]{Relative metric estimates near reducible \\Yang--Mills connections}
+\author{Bernd Johannes Wuebben}
+\date{October 28, 2026}
+\subjclass[2020]{53D20 (primary); 58D27, 53C26, 58J50 (secondary)}
+\keywords{Yang--Mills connections, singular symplectic reduction,
+quotient metric, stabilizer, small eigenvalues, quaternionic Kähler quotient}
+
+\begin{document}
+\begin{abstract}
+We study the natural $L^2$ metric near a central Yang--Mills connection
+on a closed surface. In the classical quadratic symplectic model, we
+prove a relative metric estimate with error quadratic in the harmonic
+deformation parameter, uniformly across all stabilizer types. We also
+compute the leading metric correction using the Green operators of the
+reference connection. The proof first eliminates the gauge directions
+with a fixed positive spectral gap and then minimizes over the remaining
+finite-dimensional orbit; it requires no lower bound on a positive
+orbit eigenvalue. The same argument compares every small eigenvalue of
+the gauge Laplacian with the infinitesimal stabilizer-action operator,
+including at changes of kernel dimension. As a curved finite-dimensional
+comparison, quaternionic projective and hyperbolic reductions admit
+exact orbit-metric formulas on their flat moment-map zero cone. A
+four-cycle is realized in both settings with independently vanishing
+weights. The resulting estimates distinguish uniform control of the
+quotient metric from estimates that depend on the smallest orbit scale.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Near a reducible connection, the orbit directions of the gauge group
+contain vectors of arbitrarily small norm. This makes it difficult to
+compare quotient metrics by estimates for an inverse gauge Laplacian:
+the inverse becomes unbounded as the stabilizer grows. A finite-dimensional
+model records the small directions, but an additive error estimate for
+that model need not control its smallest positive eigenvalues.
+
+For central Yang--Mills connections on a surface, the local symplectic
+model is classical. Atiyah and Bott identify curvature as the moment
+map for the gauge action \cite{AB83}. Huebschmann constructs a
+stabilizer-equivariant Kuranishi chart that identifies the moduli germ
+with a quadratic symplectic reduction \cite{Hue95,Hue96}. We use this
+chart to compare the actual $L^2$ quotient metric with the metric of the
+linear reduction. The estimates are relative and their constants do not
+depend on the stabilizer type or on ratios between positive orbit
+eigenvalues.
+
+\subsection{The surface result}
+Let $P\to\Sigma$ be a principal bundle with compact structure group $G$
+over a closed oriented Riemannian surface. Fix an invariant positive
+inner product on $\g$ and a central Yang--Mills connection $A_0$.
+Thus $F_{A_0}=\zeta\,\mathrm{vol}_\Sigma$ for a parallel central
+section $\zeta$. We consider connections with this fixed curvature,
+modulo the gauge group $\cG$. All spaces and inner products
+below are real. Put
+\[
+ d=d_{A_0},\qquad K=\Stab(A_0),\qquad
+ \kk=\cH^0_d,\qquad V=\cH^1_d.
+\]
+Centrality gives $d^2=0$ on the adjoint bundle. The finite spaces
+$\kk$ and $V$ have their $L^2$ inner products. Let $P_j$ be harmonic
+projection in degree $j$, and let $Q_j=1-P_j$. Pairing with harmonic
+zero-forms identifies $\cH^2_d$ with $\kk^*$. The quadratic moment map
+and the infinitesimal action are
+\begin{equation}\label{eq:intromodel}
+ \Theta(h)=\tfrac12P_2[h,h],\qquad
+ T_h:\kk\longrightarrow V,\quad T_h\xi=[h,\xi].
+\end{equation}
+An overall sign in the moment map depends on the convention for the
+gauge action and does not change its zero set. Write $Z=\Theta^{-1}(0)$,
+and let $g_{\mathrm{lin}}$ be the reduced metric on each orbit-type
+stratum of $Z/K$.
+
+The classical chart has the form $A(h)=A_0+a(h)$, with
+$a(h)=h+c(h)$ and $c(h)\in\im d^*$. We recall its construction in
+Section~\ref{sec:chart}. Its induced map on the quotient is denoted
+$\overline a$.
+
+\begin{theorem}\label{thm:metric}
+There are $\delta>0$ and $C<\infty$ such that, for every
+$h\in Z\cap B_\delta(V)$, the classical chart identifies the local
+orbit-type strata and satisfies
+\begin{equation}\label{eq:metricbound}
+ (1-C|h|^2)g_{\mathrm{lin}}
+ \ \leq\ \overline a^{\,*}g_{L^2}
+ \ \leq\ (1+C|h|^2)g_{\mathrm{lin}}.
+\end{equation}
+The same constant applies to all strata. There is no restriction on
+the ratios of the nonzero eigenvalues of $T_h^*T_h$.
+
+The leading correction is explicit. Let
+\[
+ R_2=d^*G_2Q_2,\qquad
+ \Delta_0=d^*d|_{\kk^\perp},\qquad
+ B_hv=Q_0\ad_h^*v,
+\]
+where $G_2$ is the degree-two Green operator and
+$\ad_h\eta=[h,\eta]$. For a tangent vector $v$ to the appropriate
+smooth orbit-type piece of $Z$, chosen $L^2$-orthogonal to
+$\im T_h$, one has
+\begin{equation}\label{eq:metricexpansion}
+ \begin{split}
+ \overline a^{\,*}g_{L^2}([v],[v])
+ ={}&|v|^2+\norm{R_2[h,v]}^2
+       -\ip{B_hv}{\Delta_0^{-1}B_hv}+\mathcal R_h(v),\\
+ &|\mathcal R_h(v)|\leq C|h|^3|v|^2.
+ \end{split}
+\end{equation}
+This remainder is uniform across the orbit types as well.
+\end{theorem}
+
+Here a tangent vector means a tangent vector to a smooth piece, rather
+than an arbitrary vector in $\ker d\Theta_h$ at a singular point.
+The positive correction in \eqref{eq:metricexpansion} measures the
+bending of the Coulomb slice. The negative correction is the part
+removed by nonconstant gauge transformations. These terms use only
+Green operators at $A_0$, where the relevant complementary gap is
+fixed.
+
+The same construction controls the small gauge spectrum. List
+eigenvalues with multiplicities, including zero eigenvalues.
+
+\begin{theorem}\label{thm:spectrum}
+Let $m=\dim\kk$ and let
+$0\leq\nu_1(h)\leq\cdots\leq\nu_m(h)$ be the eigenvalues of
+$T_h^*T_h$. For $h\in Z\cap B_\delta(V)$, the self-adjoint gauge
+Laplacian $d_{A(h)}^*d_{A(h)}$ has exactly $m$ eigenvalues below a fixed
+positive threshold. They satisfy
+\begin{equation}\label{eq:small}
+ (1-C|h|^2)\nu_j(h)\leq\lambda_j(A(h))
+       \leq(1+C|h|^2)\nu_j(h),\qquad 1\leq j\leq m.
+\end{equation}
+The next eigenvalue is bounded below uniformly, and
+$\ker d_{A(h)}=\ker T_h\subset\kk$. The estimates include parameters
+at which this kernel increases in dimension.
+\end{theorem}
+
+For unitary bundles, central Yang--Mills connections on a Riemann
+surface are Hermitian--Einstein connections. The theorems therefore
+compare actual gauge-theoretic metrics and operators. In higher complex
+dimension, a quadratic tangent model need not describe the integrable
+deformation locus; no such replacement is made here.
+
+\subsection{Proof mechanism and finite-dimensional comparisons}
+The gauge Lie algebra splits as $\kk\oplus\kk^\perp$. On
+$\kk^\perp$, the covariant derivative at $A_0$ has a positive gap.
+If $u$ is tangent to the Coulomb graph, then
+\[
+ \ip{u}{d_{A(h)}\eta}=\ip{u}{[a(h),\eta]},
+ \qquad \eta\in\kk^\perp.
+\]
+The angle between the graph tangent and these gauge directions is
+therefore $O(|h|)$. Orthogonal projection changes squared norms by
+$O(|h|^2)$. Equivariance then identifies the remaining gauge action
+exactly with $T_h$. Minimizing over its image preserves the relative
+estimate, even if its dimension changes. A second expansion gives
+\eqref{eq:metricexpansion}. The spectral argument uses the same
+Coulomb cancellation in a Schur complement.
+
+In finite dimensions, an equivariant Darboux chart at a Kähler fixed
+point gives a related quadratic metric comparison simultaneously on
+all local central moment levels. We record this consequence of the
+classical construction in Section~\ref{sec:kahler}. It separates the
+elementary passage from ambient to quotient estimates from the gauge
+analysis needed in Theorem~\ref{thm:metric}.
+
+There is also an explicit curved quaternionic comparison. For a compact
+subgroup $K\subset\Sp(n)$ fixing the origin in the affine chart of
+$\Hh P^n$ or $\Hh H^n$, the quaternionic moment-map zero set is the
+same as the flat hyperkähler zero cone. If $r=|q|$ and
+$\varepsilon=1$ or $-1$, respectively, its orbit Gram form satisfies
+\begin{equation}\label{eq:introqk}
+ G_\varepsilon(q)=(1+\varepsilon r^2)^{-1}G_0(q).
+\end{equation}
+Section~\ref{sec:quaternionic} gives the exact reduced metric and its
+uniform bounds without a local-freeness hypothesis. Section~\ref{sec:cycle}
+realizes the same weighted four-cycle in these curved quotients and in
+the surface theorem. This identifies a common operator on an explicit
+parameter family; it does not identify the two moduli spaces.
+
+\subsection{Relation to existing normal forms}
+The local symplectic reduction and its orbit-type decomposition are
+due to Sjamaar--Lerman \cite{SL91}; holomorphic slice results are
+developed by Sjamaar \cite{Sja95}. In the surface problem, the exact
+quadratic moment map and local quotient chart are Huebschmann's
+results \cite[Theorems 2.24 and 2.32]{Hue95}. Our proof retains their
+coexact construction and estimates the full gauge quotient metric,
+including its leading correction. We make no claim of a new
+topological or symplectic local model.
+
+Quaternionic Kähler reduction originates with Galicki--Lawson
+\cite{GL88}. Swann describes its relation to hyperkähler reduction
+\cite{Swa90} and the geometry of singular reductions \cite{Swa97}.
+Mayrand proves a stratification and a local
+complex-symplectic quotient model for integrable hyperkähler actions
+\cite[Theorems 1.2--1.4]{May22}. Those structural results do not,
+by themselves, compare an arbitrary curved quotient metric with a
+flat one uniformly across all orbit types. Our quaternionic formulas
+use the explicit space-form metric.
+
+\section{Relative estimates and quotient norms}\label{sec:linear}
+
+Let a compact group $K$ act on a Riemannian manifold and preserve a
+subset $Z$ partitioned into smooth orbit-type pieces. At $z$ write
+$T_z\xi=X_\xi(z)$ for the infinitesimal action and
+$W_z=\im T_z$. On a smooth piece, the norm of a quotient tangent
+class is
+\begin{equation}\label{eq:quotientnorm}
+ |[v]|_g^2=\inf_{w\in W_z}g_z(v-w,v-w).
+\end{equation}
+This formula also applies when the stabilizer has positive dimension.
+It uses the image of the action, not an inverse on its Lie algebra.
+
+\begin{lemma}\label{lem:relative}
+Suppose two metrics on the same space satisfy
+$(1-\eta)g_0\leq g_1\leq(1+\eta)g_0$, with $0\leq\eta<1$.
+Then their orbit Gram forms and their reduced metrics satisfy the
+same inequalities. The assertion also holds after pullback by an
+equivariant diffeomorphism preserving $Z$.
+\end{lemma}
+\begin{proof}
+Evaluate the metric inequalities on $T_z\xi$ for the orbit forms.
+Apply them to every $v-w$ and take the infimum for the quotient forms.
+Equivariance identifies the vertical spaces under a diffeomorphism.
+\end{proof}
+
+The following slightly sharper observation will be used for the metric
+expansion. All norms in it are Euclidean operator norms.
+
+\begin{lemma}\label{lem:residual}
+Let $H=I+E$ be a positive form on a Euclidean space, with
+$\norm E\leq\eta<1$, and let $W$ be any subspace. If $v\perp W$,
+then
+\[
+ \inf_{w\in W}H(v-w,v-w)
+ =H(v,v)-\ip{P_WE v}{(I_W+P_WE|_W)^{-1}P_WE v}.
+\]
+The absolute value of the subtracted term is at most
+$\eta^2(1-\eta)^{-1}|v|^2$, independently of $W$.
+\end{lemma}
+\begin{proof}
+Differentiation in $w$ gives
+$(I_W+P_WE|_W)w=P_WE v$. The operator on $W$ is bounded below
+by $1-\eta$. Substitution gives the formula and the bound.
+\end{proof}
+
+\subsection{Length metrics}
+We use the intrinsic length metric associated with the metrics on the
+orbit-type strata. Admissible paths are finite concatenations of paths
+smooth in a stratum on the interior of each segment, continuous at the
+endpoints, and of finite length. Endpoints may lie on smaller strata.
+We take the infimum of lengths and then the metric completion when
+needed. All local comparisons below use corresponding neighborhoods
+under the stated chart. Thus a coordinate ball is not implicitly
+identified with a ball for the reduced metric.
+
+If relative quadratic-form bounds hold with a common constant on all
+strata, their square roots compare lengths of every admissible path.
+Taking infima gives the corresponding distance bounds, and the same
+bounds extend to completions. This elementary observation is the
+meaning of the assertions across singular strata in this paper.
+
+An additive operator estimate cannot substitute for a relative one.
+For example,
+\[
+ G(r)=\diag(r^2,r^8),\qquad
+ \widetilde G(r)=G(r)+\diag(0,r^4)
+\]
+satisfy $\norm{\widetilde G-G}=r^4$, while their smallest positive
+eigenvalues have unbounded ratio as $r\to0$. The estimates below
+retain the energy in each orbit direction.
+
+\section{The classical surface chart}\label{sec:chart}
+
+We give the analytic details of the chart because the metric estimate
+depends on its particular transverse choice. The symplectic and
+moment-map assertions in this section are the classical surface local
+model \cite[Section 2]{Hue95}.
+
+\subsection{The coexact equation}
+Fix an integer $s>2$ and use Sobolev spaces $H^s$ of adjoint-valued
+forms. The bracket is continuous in the required multiplication
+norms. Hodge decomposition gives
+\[
+ \Omega^1=\cH^1_d\oplus\im d\oplus\im d^*,\qquad
+ \Omega^2=\cH^2_d\oplus\im d.
+\]
+In the completed spaces these images are closed. The map
+\[
+ d:\im d^*\cap H^s\Omega^1\longrightarrow
+       \im d\cap H^{s-1}\Omega^2
+\]
+is an isomorphism, with inverse $R_2=d^*G_2Q_2$.
+
+For $h\in V$ and $c\in\im d^*\cap H^s$, solve
+\begin{equation}\label{eq:coexact}
+ Q_2\left(d(h+c)+\tfrac12[h+c,h+c]\right)=0.
+\end{equation}
+Its derivative in $c$ at $(0,0)$ is the preceding isomorphism.
+The implicit-function theorem gives a unique small solution $c(h)$,
+smooth in $h$, and $K$-equivariant. Its value
+and first derivative vanish at zero. In particular,
+\begin{equation}\label{eq:cest}
+ \norm{c(h)}_{H^s}\leq C|h|^2,\qquad
+ \norm{Dc(h)v}_{H^s}\leq C|h||v|.
+\end{equation}
+Elliptic regularity applied to
+$c=-\tfrac12R_2[h+c,h+c]$ gives smooth spatial coefficients.
+The same estimates hold in every fixed $C^j$ norm after choosing
+the initial Sobolev index sufficiently large. We use this finite
+smooth family throughout; the constants may depend on that index.
+
+Set $a(h)=h+c(h)$ and $U_h=Da(h)$. Harmonic and coexact forms are
+orthogonal, so
+\begin{equation}\label{eq:graphmetric}
+ \norm{U_hv}^2=|v|^2+\norm{Dc(h)v}^2,
+ \qquad d^*a(h)=d^*U_hv=0.
+\end{equation}
+The homogeneous quadratic term of $c$ and its derivative are
+\begin{equation}\label{eq:cquadratic}
+ c_2(h)=-\tfrac12R_2[h,h],\qquad
+ J_hv=Dc_2(h)v=-R_2[h,v].
+\end{equation}
+Taylor's theorem in this finite parameter space gives
+$Dc(h)=J_h+O(|h|^2)$ in each fixed spatial norm.
+
+\subsection{The exact moment map}
+The affine space of connections has symplectic form
+$\Omega(u,v)=\int_\Sigma\langle u\wedge v\rangle$, where the
+angle brackets pair the adjoint-bundle factors, with the conventional
+sign chosen to match the curvature moment map. Harmonic forms pair
+trivially with coexact forms for $\Omega$. Moreover $\im d^*$ is
+isotropic. Indeed, on a surface it equals $*\im d$, star preserves
+$\Omega$, and
+\[
+ \int_\Sigma\langle d\xi\wedge d\eta\rangle=0
+\]
+by integration by parts and $d^2=0$. It follows that
+\begin{equation}\label{eq:symplecticchart}
+ a^*\Omega=\Omega|_V.
+\end{equation}
+The moment map of the residual $K$-action on the graph is
+$P_2(F_{A(h)}-F_{A_0})$, paired with $\kk$. Equivariance and
+\eqref{eq:symplecticchart} show that its differential equals that
+of the quadratic moment map $\Theta$ in \eqref{eq:intromodel}.
+Both maps vanish at zero, and hence
+\begin{equation}\label{eq:exactmoment}
+ P_2(F_{A(h)}-F_{A_0})=\Theta(h).
+\end{equation}
+Together with \eqref{eq:coexact}, this proves that $A(h)$ has
+curvature $F_{A_0}$ exactly when $h\in Z$.
+
+The gauge slice theorem identifies a small Coulomb slice modulo $K$
+with a neighborhood of $[A_0]$ in the gauge quotient. Applied to
+\eqref{eq:exactmoment}, this is Huebschmann's local quotient theorem
+\cite[Theorem 2.32]{Hue95}; its orbit-type interpretation is given
+in \cite{Hue96}. We use that result for the local identification.
+The subsequent norm comparison concerns the quotient by the full
+gauge group, rather than only the metric induced on the slice.
+
+The fixed central-curvature equation is preserved by the full gauge
+group, including when $G$ is disconnected. To see this, let
+$\pi_{\mathfrak z}$ be projection onto the adjoint center bundle.
+Its flat connection $d_{\mathfrak z}$ is independent of the choice
+of connection on $P$, and
+\[
+ \pi_{\mathfrak z}(F_{A_0+b}-F_{A_0})
+        =d_{\mathfrak z}\pi_{\mathfrak z}b.
+\]
+Gauge transformations commute with $d_{\mathfrak z}$ and, being
+orthogonal, with its adjoint. Thus the curvature of a gauge transform
+of $A_0$ and $F_{A_0}$ are harmonic center-valued two-forms with
+exact difference. They agree by Hodge theory. Gauge covariance
+then proves preservation of the fixed-curvature equation.
+
+Finally, differentiating $K$-equivariance gives an identity needed
+in both proofs:
+\begin{equation}\label{eq:equivariance}
+ d_{A(h)}\xi=[a(h),\xi]=U_hT_h\xi,
+ \qquad\xi\in\kk.
+\end{equation}
+One may reverse both infinitesimal-action signs without changing
+any norm or operator in the argument.
+
+\section{The actual quotient metric}\label{sec:metric}
+
+Write $D_h=d_{A(h)}=d+\ad_{a(h)}$. The metric on the moduli stratum
+is obtained by taking the infimum over all infinitesimal gauge
+transformations. We first take that infimum over $\kk^\perp$.
+
+\subsection{The complementary projection}
+The Poincaré estimate at $A_0$ gives
+\[
+ \norm\eta_{H^1}\leq C\norm{d\eta}_{L^2},
+ \qquad \eta\in H^1\Omega^0\cap\kk^\perp.
+\]
+Since $\norm{a(h)}_{C^0}\leq C|h|$, decreasing $\delta$ gives
+\begin{equation}\label{eq:complementgap}
+ \norm{D_h\eta}\geq(1-C|h|)\norm{d\eta}
+                  \geq c\norm\eta_{H^1}.
+\end{equation}
+Thus $L_h=D_h|_{\kk^\perp}$ has closed range in $L^2\Omega^1$.
+Let $\Pi_h$ be the orthogonal projection onto that range. For
+$u=U_hv$, Coulombness in \eqref{eq:graphmetric} gives
+\[
+ \ip{u}{L_h\eta}=\ip{u}{[a(h),\eta]}.
+\]
+Using \eqref{eq:complementgap}, we obtain
+\begin{equation}\label{eq:angle}
+ |\ip{u}{L_h\eta}|
+ \leq C|h|\norm u\norm{L_h\eta},\qquad
+ \norm{\Pi_hu}\leq C|h|\norm u.
+\end{equation}
+Pythagoras yields the quadratic relative estimate
+\begin{equation}\label{eq:complementnorm}
+ (1-C|h|^2)\norm{U_hv}^2
+ \leq\inf_{\eta\in H^1\cap\kk^\perp}
+       \norm{U_hv-D_h\eta}^2
+ \leq\norm{U_hv}^2.
+\end{equation}
+The use of squared projection norms is essential for the quadratic
+error.
+
+\subsection{Proof of the relative estimate}
+Let $v$ represent a tangent vector to a smooth orbit-type piece of
+$Z$. Every $H^1$ gauge generator splits uniquely as $\xi+\eta$,
+with $\xi\in\kk$ and $\eta\perp\kk$. By
+\eqref{eq:equivariance}, the full quotient norm is
+\begin{equation}\label{eq:fullquotient}
+ \overline a^{\,*}g_{L^2}([v],[v])
+ =\inf_{\xi\in\kk,\,\eta\in H^1\cap\kk^\perp}
+    \norm{U_h(v-T_h\xi)-D_h\eta}^2.
+\end{equation}
+Using smooth or higher-Sobolev gauge generators gives the same infimum
+by density. Elliptic regularity identifies this norm with the usual
+$L^2$ metric on the smooth moduli stratum.
+
+Apply \eqref{eq:complementnorm} and \eqref{eq:graphmetric} to
+$v-T_h\xi$, for every $\xi$, before taking the infimum. This gives
+\[
+ (1-C|h|^2)\inf_\xi|v-T_h\xi|^2
+ \leq\overline a^{\,*}g_{L^2}([v],[v])
+ \leq(1+C|h|^2)\inf_\xi|v-T_h\xi|^2.
+\]
+The outer expressions are the finite reduced norm. This proves
+\eqref{eq:metricbound}. The proof uses neither an inverse of $T_h$
+nor a bound on the dimension of its image away from the origin.
+
+\subsection{The quadratic correction}
+The closed positive form $\norm{L_h\eta}^2$ on
+$H^1\Omega^0\cap\kk^\perp$ defines a self-adjoint operator
+$C_h=L_h^*L_h$. It has domain $H^2\Omega^0\cap\kk^\perp$ and
+a uniform positive lower bound by \eqref{eq:complementgap}.
+The domain assertion follows from elliptic regularity; the fixed
+harmonic projection has smooth finite-dimensional range.
+
+Define a positive form $H_h$ on all of $V$ by
+\begin{equation}\label{eq:Hform}
+ H_h(v,v)=\norm{U_hv}^2
+   -\ip{L_h^*U_hv}{C_h^{-1}L_h^*U_hv}.
+\end{equation}
+This is exactly the middle expression in
+\eqref{eq:complementnorm}. All adjoints in this formula use the fixed
+$L^2$ metrics. Since $d^*U_h=0$,
+\begin{equation}\label{eq:sourceexpansion}
+ L_h^*U_hv=Q_0\ad_{a(h)}^*U_hv
+          =B_hv+O(|h|^2)|v|
+\end{equation}
+in $L^2$. Also
+\[
+ C_h-\Delta_0:
+ H^2\Omega^0\cap\kk^\perp\longrightarrow
+ L^2\Omega^0\cap\kk^\perp
+\]
+has norm $O(|h|)$, because its first-order and zeroth-order
+coefficients are controlled by the fixed $C^1$ norm of $a(h)$.
+The resolvent identity, or the Neumann series for
+$I+(C_h-\Delta_0)\Delta_0^{-1}$, gives
+\begin{equation}\label{eq:resolvent}
+ \norm{C_h^{-1}-\Delta_0^{-1}}_{L^2\to H^2}\leq C|h|.
+\end{equation}
+Equations \eqref{eq:graphmetric} and \eqref{eq:cquadratic} give
+\[
+ \norm{U_hv}^2
+ =|v|^2+\norm{R_2[h,v]}^2+O(|h|^3)|v|^2.
+\]
+Substituting this and \eqref{eq:sourceexpansion}--\eqref{eq:resolvent}
+into \eqref{eq:Hform} proves
+\begin{equation}\label{eq:Heffective}
+ H_h(v,v)=|v|^2+\norm{R_2[h,v]}^2
+     -\ip{B_hv}{\Delta_0^{-1}B_hv}+O(|h|^3)|v|^2.
+\end{equation}
+Every remainder here is a uniform operator-norm estimate on $V$.
+
+For the residual quotient, choose $v\perp W_h=\im T_h$. By
+\eqref{eq:fullquotient}, the desired norm is
+$\inf_{w\in W_h}H_h(v-w,v-w)$. We have
+$H_h=I+E_h$, with $\norm{E_h}\leq C|h|^2$.
+Lemma~\ref{lem:residual} shows that this final infimum differs from
+$H_h(v,v)$ by at most $C|h|^4|v|^2$, uniformly in $W_h$.
+Combining with \eqref{eq:Heffective} proves
+\eqref{eq:metricexpansion} and completes Theorem~\ref{thm:metric}.
+
+\begin{corollary}\label{cor:length}
+Let $d_{\mathrm{lin},R}$ and $d_{L^2,R}$ be the intrinsic length
+metrics on $(Z\cap B_R)/K$ and its image, with the convention of
+Section~\ref{sec:linear}. For sufficiently small $R$,
+\[
+ \sqrt{1-CR^2}\,d_{\mathrm{lin},R}
+ \leq\overline a^{\,*}d_{L^2,R}
+ \leq\sqrt{1+CR^2}\,d_{\mathrm{lin},R}.
+\]
+The comparison extends to their metric completions.
+\end{corollary}
+\begin{proof}
+On every stratum segment in the truncated domain, Theorem~\ref{thm:metric}
+compares speeds by the displayed square-root factors. Integrate,
+sum over segments, and take the infimum over corresponding paths.
+The two Lipschitz bounds extend the chart and its inverse to
+completions.
+\end{proof}
+
+\begin{remark}
+The expansion is pointwise on horizontal stratum tangent vectors.
+Differentiating the horizontal projection as the stabilizer changes
+can introduce inverse small eigenvalues. In particular,
+\eqref{eq:metricexpansion} is not a curvature estimate for the
+reduced metric.
+\end{remark}
+
+\section{All small gauge eigenvalues}\label{sec:spectrum}
+
+We prove Theorem~\ref{thm:spectrum}. Regard
+$\mathcal L_h=D_h^*D_h$ as a nonnegative self-adjoint operator on
+$L^2\Omega^0$, with form domain $H^1\Omega^0$ and operator domain
+$H^2\Omega^0$. It has compact resolvent. Use the fixed decomposition
+$L^2\Omega^0=\kk\oplus\kk^\perp$ and write, in quadratic-form
+blocks,
+\begin{equation}\label{eq:block}
+ \mathcal L_h=
+ \begin{pmatrix}\Gamma_h&\mathcal B_h^*\\
+                 \mathcal B_h&C_h\end{pmatrix}.
+\end{equation}
+The complementary operator is the one in the previous section;
+$C_h\geq\gamma>0$ uniformly. Since $\kk$ consists of smooth
+parallel sections, $\mathcal B_h=Q_0\mathcal L_h|_\kk$ is a
+bounded map from the finite-dimensional space $\kk$ to $L^2$.
+
+For $\xi\in\kk$, \eqref{eq:equivariance} and
+\eqref{eq:graphmetric} show that
+\begin{equation}\label{eq:Gamma}
+ \norm{T_h\xi}^2
+ \leq\ip{\xi}{\Gamma_h\xi}
+ \leq(1+C|h|^2)\norm{T_h\xi}^2.
+\end{equation}
+There is also an exact cancellation. As $d\xi=0$ and $d^*a=0$,
+\[
+ d^*[a,\xi]=[d^*a,\xi]=0.
+\]
+Consequently
+\begin{equation}\label{eq:spectralcoupling}
+ \mathcal L_h\xi=\ad_a^*D_h\xi,
+ \qquad
+ \norm{\mathcal B_h\xi}^2
+ \leq C|h|^2\ip{\xi}{\Gamma_h\xi}.
+\end{equation}
+The right side is the energy of the particular orbit direction,
+which may be much smaller than $|h|^2|\xi|^2$.
+
+For $0\leq\lambda<\gamma/2$, form the finite Schur operator
+\[
+ S_h(\lambda)=\Gamma_h-\lambda I
+       -\mathcal B_h^*(C_h-\lambda)^{-1}\mathcal B_h.
+\]
+Equation~\eqref{eq:spectralcoupling} gives
+\begin{equation}\label{eq:Schur}
+ (1-C|h|^2)\Gamma_h-\lambda I
+ \leq S_h(\lambda)\leq\Gamma_h-\lambda I.
+\end{equation}
+These finite inequalities control the eigenvalue count of the full
+operator. Indeed, for $\xi\in\kk$ and
+$\eta\in H^1\cap\kk^\perp$, completing the square gives
+\begin{equation}\label{eq:inertia}
+ \begin{split}
+ \ip{\xi+\eta}{(\mathcal L_h-\lambda)(\xi+\eta)}
+ ={}&\ip{\xi}{S_h(\lambda)\xi}\\
+ &+\norm{(C_h-\lambda)^{1/2}
+   \bigl(\eta+(C_h-\lambda)^{-1}\mathcal B_h\xi\bigr)}^2.
+ \end{split}
+\end{equation}
+The left side is interpreted as a closed quadratic form.
+The added vector belongs to $H^2$, so the change of coordinates is
+invertible on the form domain. The number of eigenvalues of
+$\mathcal L_h$ strictly below $\lambda$ is therefore the number
+of negative eigenvalues of $S_h(\lambda)$.
+
+Restriction to the trial space $\kk$ puts the first $m$ eigenvalues
+below $\norm{\Gamma_h}=O(|h|^2)$. The max--min principle applied
+to the codimension-$m$ subspace $\kk^\perp$ gives
+$\lambda_{m+1}\geq\gamma$. If $\gamma_j(h)$ are the ordered
+eigenvalues of $\Gamma_h$, including zeros, \eqref{eq:Schur} and
+\eqref{eq:inertia} imply
+\[
+ (1-C|h|^2)\gamma_j(h)
+ \leq\lambda_j(A(h))\leq\gamma_j(h),\qquad j\leq m.
+\]
+For the lower bound, evaluate the inertia comparison at
+$\lambda=(1-C|h|^2)\gamma_j(h)$; at most $j-1$ eigenvalues are
+strictly smaller. A zero right side gives the bound by positivity.
+The upper bound is the ordinary min--max restriction. Repeated
+eigenvalues cause no change. Finally \eqref{eq:Gamma} compares
+$\gamma_j$ with $\nu_j$, proving \eqref{eq:small}.
+
+To identify the kernel as a subspace, suppose
+$D_h(\xi+\eta)=0$. Estimate \eqref{eq:complementnorm} applies to
+$U_hT_h\xi=D_h\xi$, so its distance from $\im L_h$ is positive
+unless $D_h\xi=0$. Hence $T_h\xi=0$ by injectivity of $U_h$,
+and \eqref{eq:complementgap} gives $\eta=0$. The converse follows
+from \eqref{eq:equivariance}. This proves the exact kernel assertion.
+If the adjoint bundle is zero, the spectral assertion is read as the
+absence of any spectrum; otherwise the preceding enumeration applies.
+
+\section{A quantitative Kähler fixed-point comparison}\label{sec:kahler}
+
+For completeness, the finite-dimensional estimate can be obtained
+directly from the usual equivariant Darboux construction. Its proof is
+short; its role is to isolate the part of the comparison that needs
+no gauge-theoretic analysis.
+
+\begin{proposition}\label{prop:kahler}
+Let a compact group $K$ act by holomorphic isometries on a Kähler
+manifold $(M,g,\omega)$ and fix $p$. Set $V=T_pM$, with its flat
+metric $g_0$ and isotropy action. There is an equivariant symplectic
+chart $\Phi:B_\delta(V)\to M$, fixing $p$, such that
+\begin{equation}\label{eq:kahlerambient}
+ (1-C|z|^2)g_0\leq\Phi^*g\leq(1+C|z|^2)g_0.
+\end{equation}
+In this chart the centered local moment map is exactly the quadratic
+moment map of the isotropy representation. One chart and constant
+therefore compare the orbit forms and reduced metrics on every
+level $\lambda\in(\kk^*)^K$ in the domain, across all orbit types.
+\end{proposition}
+
+\begin{proof}
+Let $E=\exp_p$ on an invariant ball. Normal coordinates and
+$\nabla\omega=0$ give
+\[
+ E^*g=g_0+O(|z|^2),\qquad
+ E^*\omega=\omega_0+\beta,\qquad
+ \beta=O(|z|^2),\quad D\beta=O(|z|).
+\]
+The radial homotopy primitive
+\[
+ \alpha_z(v)=\int_0^1t\,\beta_{tz}(z,v)\,dt
+\]
+is invariant and satisfies $d\alpha=\beta$,
+$\alpha=O(|z|^3)$ and $D\alpha=O(|z|^2)$.
+The forms $\omega_t=\omega_0+t\beta$ are uniformly nondegenerate
+on one small ball. Solve
+$\iota_{X_t}\omega_t=-\alpha$. Then
+$X_t=O(|z|^3)$ and $DX_t=O(|z|^2)$, uniformly in $t\in[0,1]$.
+The flow $\psi_t$ is defined on a smaller invariant ball for all
+these times. Its equation and variational equation give
+\[
+ \psi_1(z)=z+O(|z|^3),\qquad D\psi_1(z)=I+O(|z|^2).
+\]
+Thus $\Phi=E\circ\psi_1$ is equivariant and symplectic and
+satisfies \eqref{eq:kahlerambient}.
+
+The centered local moment map exists on this contractible
+neighborhood and can be normalized equivariantly under the full
+compact group. Equivariance and the symplectic identity show that
+its pullback and the quadratic moment map have identical
+differentials. Their values at zero agree, proving exact equality.
+The levels invariant under all of $K$, rather than only its identity
+component, are the levels stated in the proposition. Equivariance
+preserves their stabilizers. Lemma~\ref{lem:relative} gives the
+orbit and quotient estimates with the same constant.
+\end{proof}
+
+For a fixed radius $R$, the associated intrinsic distance estimates
+have factors $\sqrt{1\pm CR^2}$. The proposition is a quantitative
+consequence of equivariant Darboux and singular reduction
+\cite{SL91,Sja95}; its proof uses the whole ambient metric estimate.
+It does not attempt to invert a moment-map derivative on a singular
+level. A triplet of moment maps on a quaternionic manifold requires
+a separate treatment, as in the explicit class below.
+
+\section{Quaternionic space-form quotients}\label{sec:quaternionic}
+
+We now give a curved class in which the three moment equations and
+the quotient metric can both be computed exactly. These formulas are
+consequences of the classical Hopf construction and quaternionic
+reduction \cite{GL88,Swa90}. They provide a useful comparison with
+the surface estimate, without asserting a normal form for a general
+quaternionic Kähler metric.
+
+Let $K\subset\Sp(n)$ act on quaternionic columns by left matrix
+multiplication. The maps are right-$\Hh$-linear. Extend the action
+to $\Hh^{n+1}$ by fixing the first coordinate, and use the affine
+chart $[1:q]$. Write
+\[
+ \varepsilon=1\quad\hbox{on }\Hh P^n,\qquad
+ \varepsilon=-1\quad\hbox{on }\Hh H^n,\qquad
+ s=1+\varepsilon|q|^2.
+\]
+The hyperbolic chart has $|q|<1$. Normalize both metrics to be the
+Euclidean metric at $q=0$. Here $q^*v=\sum_j\overline q_jv_j$
+is quaternion-valued.
+
+\subsection{Metric and moment section}
+The quaternionic Hermitian form
+\[
+ \mathcal B_\varepsilon(z,w)
+   =\varepsilon\overline z_0w_0+\sum_{j=1}^n\overline z_jw_j
+\]
+has $\mathcal B_\varepsilon(x,x)=\varepsilon$ on the local Hopf
+section $x(q)=(1,q)/\sqrt{s}$. For $b=q^*v$ and $a=\Rea b$,
+direct differentiation gives
+\[
+ \mathcal B_\varepsilon(x,dx(v))=\frac{\operatorname{Im}b}{s},
+ \qquad
+ \Rea\mathcal B_\varepsilon(dx(v),dx(v))
+      =\frac{|v|^2}{s}-\frac{\varepsilon a^2}{s^2}.
+\]
+The vertical vectors are $xu$, for $u\in\operatorname{Im}\Hh$,
+with squared norm $\varepsilon|u|^2$. Subtracting their component
+from $dx(v)$ gives the horizontal lift
+$dx(v)-\varepsilon x\operatorname{Im}(b)/s$. Its squared norm is
+\begin{equation}\label{eq:qkmetric}
+ g_\varepsilon(v,v)
+      =\frac{|v|^2}{s}-\frac{\varepsilon|q^*v|^2}{s^2}.
+\end{equation}
+
+The principal $\Sp(1)$ connection is
+$\theta=\varepsilon\mathcal B_\varepsilon(x,dx)$.
+For $\xi\in\kk$, its value on the lifted fundamental field is
+\[
+ \theta(\widetilde X_\xi)=\frac{\varepsilon q^*\xi q}{s}.
+\]
+The connection is $K$-invariant. Cartan's formula expresses the
+covariant derivative of this section as minus contraction of the
+curvature. Since that curvature is a nonzero constant multiple of
+the quaternionic Kähler two-form triple, the quaternionic moment
+section in this frame is a fixed nonzero scalar multiple of
+$q^*\xi q/s$; see \cite[Chapter 3, \S3.2]{Swa90}.
+The first homogeneous coordinate is fixed, so there is no constant
+term in the numerator. In particular the curved zero set is exactly
+the flat hyperkähler zero cone
+\begin{equation}\label{eq:qkzero}
+ Z_\Hh=\{q:q^*\xi q=0\text{ for every }\xi\in\kk\}
+\end{equation}
+intersected with the chart domain. This description uses a local
+frame of the rank-three quaternionic bundle; it does not make the
+moment section a globally defined triple of real functions.
+
+\subsection{Exact comparison on every stratum}
+Set $T_q\xi=\xi q$, and use one fixed invariant inner product on
+$\kk$ to define orbit Gram operators. The smooth orbit-type pieces
+of the flat reduction carry their usual quotient metrics
+\cite[Theorem 1.1 and \S2.5]{May22}. The same pieces and quotient
+norms apply to the curved zero set. Indeed, an element fixing
+$[1:q]$ fixes the normalized lift $x(q)$: its possible right
+$\Sp(1)$ multiplier is forced to be $1$ by the first coordinate.
+The stabilizer therefore acts trivially on the quaternionic
+rank-three bundle. Its fixed locus is the chart of a quaternionic
+linear subspace, and reduction on the exact stabilizer locus by
+$N_K(H)/H$ gives the smooth quotient pieces. This is the trivial
+quaternionic-isotropy case of singular quaternionic reduction
+\cite[\S\S3--4]{Swa97}; arbitrary singular quaternionic reductions
+need not have only quaternionic Kähler strata.
+
+\begin{proposition}\label{prop:qk}
+On $Z_\Hh$, the flat and curved horizontal spaces agree, and
+\begin{equation}\label{eq:qkgram}
+ G_\varepsilon(q)=s^{-1}G_0(q).
+\end{equation}
+On each quotient stratum, the quaternion-valued one-form
+$\beta_q(v)=q^*v$ descends and satisfies
+\begin{equation}\label{eq:qkreduced}
+ g_{\varepsilon,\mathrm{red}}
+     =s^{-1}g_{0,\mathrm{red}}-\varepsilon s^{-2}|\beta|^2.
+\end{equation}
+Consequently, with $r=|q|$,
+\begin{align}
+ (1+r^2)^{-2}g_{0,\mathrm{red}}
+   &\leq g_{+,\mathrm{red}}
+     \leq(1+r^2)^{-1}g_{0,\mathrm{red}},\label{eq:qkplus}\\
+ (1-r^2)^{-1}g_{0,\mathrm{red}}
+   &\leq g_{-,\mathrm{red}}
+     \leq(1-r^2)^{-2}g_{0,\mathrm{red}}.\label{eq:qkminus}
+\end{align}
+No local-freeness assumption is required for these estimates.
+\end{proposition}
+
+\begin{proof}
+The zero equation says $q^*T_q\xi=0$. Polarization of
+\eqref{eq:qkmetric} therefore gives, for every ambient vector $v$,
+\[
+ g_\varepsilon(v,T_q\xi)=s^{-1}g_0(v,T_q\xi).
+\]
+This proves both the Gram identity and equality of the orthogonal
+complements of the orbit spaces, including where their ranks change.
+The one-form $\beta$ is invariant, because $K\subset\Sp(n)$,
+and annihilates the vertical vectors on $Z_\Hh$. It thus descends
+on each stratum. Evaluate \eqref{eq:qkmetric} on the common
+horizontal representative to obtain \eqref{eq:qkreduced}.
+Finally $|q^*v|^2\leq r^2|v|^2$ gives
+\eqref{eq:qkplus} and \eqref{eq:qkminus}.
+\end{proof}
+
+For the intrinsic distances on corresponding truncations $r\leq R$,
+with the path convention of Section~\ref{sec:linear}, these bounds give
+\[
+ (1+R^2)^{-1}d_0\leq d_+\leq d_0,
+ \qquad
+ d_0\leq d_-\leq(1-R^2)^{-1}d_0\quad(R<1).
+\]
+They persist after completion. These are statements about the
+specified coordinate domains, not about unrestricted global distances.
+
+\subsection{Abelian charges and supports}
+For a torus, let $Q_e$ be the integral charge of its $e$th quaternionic
+coordinate and use the action
+$(T_q\xi)_e=i(Q_e\cdot\xi)q_e$. Its flat Gram matrix is
+\begin{equation}\label{eq:charge}
+ G_0(q)=\sum_e|q_e|^2Q_eQ_e^{\mathsf T}.
+\end{equation}
+At a zero-moment point, every eigenvalue of the curved Gram operator
+is exactly $s^{-1}$ times its flat value. This includes all zero
+eigenvalues and uses the same fixed inner product on the Lie algebra.
+A gauge-boson mass interpretation additionally requires a specified
+positive gauge kinetic form; \eqref{eq:charge} alone does not supply it.
+
+Zero-moment points with independently chosen supports can be obtained
+by taking two copies of each charge. In a pair, set the coordinates
+equal to $(b_e,jb_e)$, with $b_e\geq0$ real. Their moments cancel,
+since
+\[
+ \overline b_e i b_e+\overline{jb_e}i(jb_e)
+       =b_e^2\{i+(-j)ij\}=0,
+\]
+whereas their Gram contribution is $2b_e^2Q_eQ_e^{\mathsf T}$.
+Thus supports of charge \emph{pairs} may be chosen independently.
+Arbitrary individual-coordinate supports in an undoubled
+representation need not satisfy the moment equations.
+
+\section{A four-cycle in both geometric settings}\label{sec:cycle}
+
+The following example makes the independence from weak orbit scales
+explicit. Its matrix algebra is elementary. The geometric point is
+that the same matrix occurs on actual solution sets in both settings.
+
+\subsection{The common matrix}
+Give the edges $12,23,34,41$ of a four-cycle the weights $a,s,a,t$,
+where $a>0$ and $0\leq s,t\leq a/4$. Its Laplacian is
+\begin{equation}\label{eq:cyclematrix}
+ L(a,s,t)=
+ \begin{pmatrix}
+ a+t&-a&0&-t\\
+ -a&a+s&-s&0\\
+ 0&-s&a+s&-a\\
+ -t&0&-a&a+t
+ \end{pmatrix}.
+\end{equation}
+The reflection $(14)(23)$ decomposes $\R^4$ into two orthogonal
+planes. In the bases $(e_1+e_4,e_2+e_3)/\sqrt2$ and
+$(e_1-e_4,e_2-e_3)/\sqrt2$, its blocks are
+\[
+ \begin{pmatrix}a&-a\\-a&a\end{pmatrix},\qquad
+ \begin{pmatrix}a+2t&-a\\-a&a+2s\end{pmatrix}.
+\]
+Hence the ordered eigenvalues on $\mathbf1^\perp$ are
+\begin{equation}\label{eq:cycleeigen}
+ \nu_-=a+s+t-\sqrt{a^2+(s-t)^2},\qquad
+ 2a,\qquad
+ \nu_+=a+s+t+\sqrt{a^2+(s-t)^2}.
+\end{equation}
+The inequalities $\sqrt{a^2+x^2}\leq a+x^2/(2a)$ and
+$|s-t|\leq s+t$ give
+\begin{equation}\label{eq:weakscale}
+ \left(1-\frac{s+t}{2a}\right)(s+t)
+       \leq\nu_-\leq s+t.
+\end{equation}
+Thus $\nu_-=0$ precisely when $s=t=0$, and
+$\nu_-\sim s+t$ whenever $(s+t)/a\to0$, with no condition on
+$s/t$. The product of the three values is
+\[
+ 2a\nu_-\nu_+=4a^2(s+t)+8ast.
+\]
+These identities follow from the displayed blocks.
+
+\subsection{Surface Hermitian--Einstein connections}
+Let $\Sigma$ have genus $g\geq2$ and area one. Choose pairwise
+nonisomorphic flat unitary line bundles $L_1,\ldots,L_4$ whose
+tensor product is trivial, and fix a parallel unitary trivialization
+of that product. Such a choice is obtained from three generic flat
+lines by taking the fourth to be their inverse product. The direct
+sum of the flat connections is then an $\mathrm{SU}(4)$ connection
+on $E=\bigoplus_iL_i$, to which the preceding theorems apply. Its
+infinitesimal determinant-one stabilizer is the space of diagonal
+matrices $i\diag(\xi_1,\ldots,\xi_4)$ with
+$\sum\xi_i=0$. With the invariant matrix inner product
+$-\tr(XY)$ and area one, this is Euclidean $\mathbf1^\perp$.
+
+For $i\ne j$, the degree-zero line bundle
+$\Hom(L_j,L_i)$ is nontrivial. It has no holomorphic sections,
+so Riemann--Roch gives
+\[
+ \dim_\C H^{0,1}(\Sigma,\Hom(L_j,L_i))=g-1.
+\]
+The real harmonic deformation space identifies with the underlying
+real space of
+\[
+ H^{0,1}(\Sigma,\End_0 E),
+\]
+where $\End_0 E$
+denotes the trace-free complex endomorphism bundle.
+For each edge, select one harmonic direction in each of
+the two ordered off-diagonal summands. Normalize its complex
+coordinate so that the induced real harmonic-one-form norm is
+the standard norm. Distinct selected summands are orthogonal.
+
+The two summands on the edge $ij$ have opposite torus weights
+$e_i-e_j$ and $e_j-e_i$. Assign them equal complex-coordinate
+magnitudes $\sqrt{w_{ij}/2}$, where
+$(w_{12},w_{23},w_{34},w_{41})=(a,s,a,t)$. Since the reference
+stabilizer is diagonal, the moment map is precisely the torus
+moment map on this orthogonal representation. The two
+contributions cancel on every edge. We therefore obtain
+\begin{equation}\label{eq:surfacecycle}
+ h\in\Theta^{-1}(0),\qquad |h|^2=2a+s+t,\qquad
+ T_h^*T_h=L(a,s,t)|_{\mathbf1^\perp}.
+\end{equation}
+For small weights the classical chart gives actual flat unitary
+connections $A(h)$ with the specified determinant. They are
+Hermitian--Einstein connections on their induced holomorphic
+bundles. Their existence here follows from the exact moment
+equation and the chart, not from the matrix calculation.
+
+Theorem~\ref{thm:spectrum} compares the three small gauge
+eigenvalues with \eqref{eq:cycleeigen} by factors
+$1\pm C(2a+s+t)$. When $s+t>0$, the support graph is connected
+and its determinant-one infinitesimal stabilizer vanishes. At
+$s=t=0$ it has dimension one. The same estimate applies there,
+including the newly zero eigenvalue. Theorem~\ref{thm:metric}
+simultaneously compares the full quotient metrics, rather than
+only this restricted family of orbit operators.
+
+\subsection{Curved quaternionic quotients}
+Let the effective torus $T^4/U(1)_{\mathrm{diag}}$ act on
+$\Hh^8$. For each edge, take two quaternionic coordinates of
+charge $Q_{ij}=e_i-e_j$, with values
+\[
+ \left(\sqrt{w_{ij}/2},\;j\sqrt{w_{ij}/2}\right).
+\]
+The paired-charge calculation gives
+\[
+ q\in Z_\Hh,\qquad |q|^2=2a+s+t,\qquad
+ G_0(q)=L(a,s,t)|_{\mathbf1^\perp},
+\]
+using the Euclidean metric on the torus Lie algebra. The points
+$[1:q]$ lie in the actual zero level of the quaternionic moment
+section on $\Hh P^8$ and, when $2a+s+t<1$, on $\Hh H^8$.
+Their curved orbit
+eigenvalues are exactly
+\begin{equation}\label{eq:curvedcycle}
+ \frac{\nu_-}{1+\varepsilon(2a+s+t)},\qquad
+ \frac{2a}{1+\varepsilon(2a+s+t)},\qquad
+ \frac{\nu_+}{1+\varepsilon(2a+s+t)}.
+\end{equation}
+Equations \eqref{eq:surfacecycle} and \eqref{eq:curvedcycle}
+compare actual geometric operators on a common parameter family.
+The two quotient spaces have different dimensions and are not
+identified by this construction.
+
+For example, take $a=\rho^2$, $s=\rho^8$, and
+$t=\exp(-1/\rho^2)$ as $\rho\downarrow0$. The smallest positive
+model eigenvalue is asymptotic to $\rho^8$, whereas
+$r^2=2a+s+t\sim2\rho^2$. An additive $O(r^4)$ error can
+exceed that eigenvalue. Both geometric comparisons above instead
+give relative error $O(\rho^2)$, regardless of the separation
+between $s$ and $t$. Setting both weak weights to zero retains
+the same estimates with the enlarged kernel.
+
+\section{Further questions}
+
+The surface argument uses two special features: the adjoint
+connection at the reference point is flat, and the coexact graph
+is exactly symplectic. In higher complex dimension, integrability
+adds equations to the deformation problem. A useful extension
+would require a chart of the actual integrable locus with a
+uniform metric estimate; the orbit Gram matrix alone cannot
+provide that chart.
+
+The quaternionic space-form calculation makes a different
+simplification. Its moment section and metric are explicit in
+one common coordinate system. For a general quaternionic Kähler
+metric, establishing a comparable chart across all stabilizer
+types remains a separate problem. In particular, the formulas
+above do not determine the metric of a physical compactification
+whose metric is not already known.
+
+Finally, the estimates control tangent norms and the resulting
+local intrinsic distances. They do not control derivatives of
+the quotient metric near a change of orbit type. Curvature
+asymptotics would require additional estimates, since the
+horizontal projection can vary rapidly even when the metric
+comparison is uniform.
+
+\begin{thebibliography}{Hue95}
+
+\bibitem[AB83]{AB83}
+M.~F. Atiyah and R.~Bott,
+\emph{The Yang--Mills equations over Riemann surfaces},
+Philos.\ Trans.\ Roy.\ Soc.\ London Ser.\ A \textbf{308} (1983), 523--615;
+\href{https://doi.org/10.1098/rsta.1983.0017}{doi:10.1098/rsta.1983.0017}.
+
+\bibitem[GL88]{GL88}
+K.~Galicki and H.~B. Lawson, Jr.,
+\emph{Quaternionic reduction and quaternionic orbifolds},
+Math.\ Ann.\ \textbf{282} (1988), 1--21;
+\href{https://doi.org/10.1007/BF01457009}{doi:10.1007/BF01457009}.
+
+\bibitem[Hue95]{Hue95}
+J.~Huebschmann,
+\emph{The singularities of Yang--Mills connections for bundles on a
+surface. I. The local model},
+Math.\ Z.\ \textbf{220} (1995), 595--609;
+\href{https://arxiv.org/abs/dg-ga/9411006}{arXiv:dg-ga/9411006}.
+
+\bibitem[Hue96]{Hue96}
+J.~Huebschmann,
+\emph{The singularities of Yang--Mills connections for bundles on a
+surface. II. The stratification},
+Math.\ Z.\ \textbf{221} (1996), 83--92;
+\href{https://arxiv.org/abs/dg-ga/9411007}{arXiv:dg-ga/9411007}.
+
+\bibitem[May22]{May22}
+M.~Mayrand,
+\emph{Stratification of singular hyperkähler quotients},
+Complex Manifolds \textbf{9} (2022), 261--284;
+\href{https://doi.org/10.1515/coma-2021-0140}{doi:10.1515/coma-2021-0140}.
+
+\bibitem[Sja95]{Sja95}
+R.~Sjamaar,
+\emph{Holomorphic slices, symplectic reduction and multiplicities of
+representations},
+Ann.\ of Math.\ (2) \textbf{141} (1995), 87--129;
+\href{https://doi.org/10.2307/2118628}{doi:10.2307/2118628}.
+
+\bibitem[SL91]{SL91}
+R.~Sjamaar and E.~Lerman,
+\emph{Stratified symplectic spaces and reduction},
+Ann.\ of Math.\ (2) \textbf{134} (1991), 375--422;
+\href{https://doi.org/10.2307/2944350}{doi:10.2307/2944350}.
+
+\bibitem[Swa90]{Swa90}
+A.~F. Swann,
+\emph{HyperKähler and Quaternionic Kähler Geometry},
+D.Phil.\ thesis, University of Oxford, 1990;
+\url{https://users-math.au.dk/~swann/thesisafs.pdf}.
+
+\bibitem[Swa97]{Swa97}
+A.~Swann,
+\emph{Singular moment maps and quaternionic geometry},
+Banach Center Publ.\ \textbf{39} (1997), 143--153;
+\url{https://matwbn.icm.edu.pl/ksiazki/bcp/bcp39/bcp39113.pdf}.
+
+\end{thebibliography}
+
+\bigskip
+\noindent{\sc Bernd Johannes Wuebben, New York, NY,}
+\texttt{wuebben@gmail.com}
+
+\end{document}
