@@ -3,6 +3,7 @@
 **Bernd Johannes Wuebben** · 28 October 2026 · 14 pages
 
 [Read the paper](main.pdf) · [LaTeX source](main.tex) ·
+[Abstract and citation](https://bwuebben.github.io/papers/relative-metrics-reducible-yang-mills/) ·
 [Zenodo:23740619](https://zenodo.org/records/23740619) ·
 [Geometry & moduli guide](https://bwuebben.github.io/research/geometry/) ·
 [Author ORCID](https://orcid.org/0009-0002-4588-3284)
