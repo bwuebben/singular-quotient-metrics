@@ -1,6 +1,5 @@
 cff-version: 1.2.0
 message: "Please cite the manuscript when using this work."
-type: article
 title: "Relative metric estimates near reducible Yang–Mills connections"
 authors:
   - family-names: Wuebben
@@ -10,3 +9,4 @@ version: "1.0"
 date-released: "2026-10-28"
 repository-code: "https://github.com/bwuebben/singular-quotient-metrics"
 url: "https://github.com/bwuebben/singular-quotient-metrics"
+doi: "10.5281/zenodo.23740619"

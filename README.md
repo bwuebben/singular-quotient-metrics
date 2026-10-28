@@ -3,6 +3,7 @@
 **Bernd Johannes Wuebben** · 28 October 2026 · 14 pages
 
 [Read the paper](main.pdf) · [LaTeX source](main.tex) ·
+[Zenodo:23740619](https://zenodo.org/records/23740619) ·
 [Geometry & moduli guide](https://bwuebben.github.io/research/geometry/) ·
 [Author ORCID](https://orcid.org/0009-0002-4588-3284)
 
@@ -87,5 +88,10 @@ theorems are proved in the manuscript.
 - `manuscript.json`: release metadata and file checksums.
 - `CITATION.cff` and `citation.bib`: citation metadata.
 - [RIGHTS.md](RIGHTS.md): manuscript and supplementary-file rights.
+
+The version 1.0 archive is [doi:10.5281/zenodo.23740619](https://doi.org/10.5281/zenodo.23740619).
+The [concept DOI](https://doi.org/10.5281/zenodo.23740618) identifies the version
+series. Cite the version DOI for this exact manuscript. The repository PDF is
+the current released version; `manuscript.json` records its checksum.
 
 This repository distributes the released paper. arXiv submission is pending.

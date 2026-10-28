@@ -22,5 +22,14 @@
       "sha256": "26eee6dfb7c322a38f7a1afd3c58554fe9911bc4be8eadfe8c3cbb08db68bede",
       "size_bytes": 238
     }
+  },
+  "archive": {
+    "repository": "Zenodo",
+    "record_id": "23740619",
+    "doi": "10.5281/zenodo.23740619",
+    "concept_doi": "10.5281/zenodo.23740618",
+    "url": "https://zenodo.org/records/23740619",
+    "version": "1.0",
+    "published_at": "2026-10-28T18:11:09.687408+00:00"
   }
 }
